@@ -1,0 +1,185 @@
+@charset 'utf-8';
+@import 'base/typography';
+@import 'base/colors';
+@import '../components/Button/Button';
+@import '../components/EmergencyStop/EmergencyStop';
+@import '../layouts/Widget';
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}
+
+Body{
+    background-color: $background;
+    overflow: hidden;
+    color: $text;
+    
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+ /* width */
+ ::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 6px;
+    background: $secondary;
+    border: 1px solid rgba(0, 56, 74, 0.05);
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $secondary;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      width: 6px;
+    background:$highlight;
+    border-radius: 6px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $highlight;
+  } 
+
+.App{
+    padding: 95px 0 0 45px;    
+}
+
+
+.ulHori{
+    display: inline-block;
+    margin-bottom: 3px;
+}
+
+.ulHori li{
+    display: inline-block;
+    width: 25px;
+    height: 50px;
+    margin-right: 2px;
+}
+.ulHori li h2{
+    text-align: center;
+}
+
+
+.ulVerti li{
+    margin-bottom: 2px;
+}
+.ulVerti li h2{
+    text-align: center;
+}
+
+.cross-verti{
+    padding-left: 84px;
+}
+
+.div-axis{
+    margin-top: 32px;
+}
+.ul-axis{
+    margin-bottom: 5px;
+}
+.ul-axis li{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.div-terminal{
+    width: 328px;
+    height: 217px;
+    overflow-y: scroll;
+}
+
+.div-terminal p{
+    padding: 10px;
+    white-space: pre-wrap;
+    font-family: IBM mono;
+    font-size: 12px;
+    line-height: 20px;
+
+}
+
+.inset-field{
+    
+    border-radius: 6px;
+    background: $secondary;
+    border: 1px solid rgba(0, 56, 74, 0.05);
+
+}
+
+.ul-terminal-in{
+    margin-top: 10px;
+    
+}
+.ul-terminal-in li{
+    display: inline-block;
+}
+
+.ul-terminal-in input{
+    margin-right: 10px;
+    vertical-align: top;
+    width: 258px;
+    height: 23px;
+    padding-left: 10px;
+}
+
+.div-files-window{
+    margin:10px 0 80px 0;
+    width: 328px;
+    height: 215px;
+    overflow-y: auto;
+}
+
+.ul-files-window{
+    padding: 5px;
+    white-space: pre-wrap;
+    font-family: IBM mono;
+    font-size: 12px;
+    line-height: 20px;
+}
+.ul-files-window li{
+    border-radius: 4px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.ul-files-window li.active{
+    background-color: $highlight;
+    color: $white;
+}
+
+.files-status-bar{
+    width: 328px;
+    height: 8px;
+}
+.files-status-bar-progress{
+    
+    height: 6px;
+    background-color: $highlight;
+}
+
+.files-status-meta{
+    white-space: pre-wrap;
+    font-family: IBM mono;
+    font-size: 10px;
+    padding-top: 10px;
+}
+
+.ul-files-control{
+    margin-top: 20px;
+}
+.ul-files-control li{
+    vertical-align: top;
+    display: inline-block;
+    width: 50px;
+    margin-right: 5px;
+}

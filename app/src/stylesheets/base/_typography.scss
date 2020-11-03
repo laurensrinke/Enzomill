@@ -1,0 +1,36 @@
+$font-size-labels: 10px;
+$font-size-h1: 24px;
+$font-size-h2: 16px;
+$font-size-text: 10px;
+
+
+@font-face {
+  font-family: 'FS Industrie';
+  src: url('../../assets/fonts/FSIndustrieTrial-Book.otf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'FS Industrie';
+  src: url('../../assets/fonts/FSIndustrieTrial-Medium.otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'FS Industrie';
+  src: url('../../assets/fonts/FSIndustrieTrial-Bold.otf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'IBM Mono';
+  src: url('../../assets/fonts/IBMPlexMono-Regular.ttf');
+  font-weight: normal;
+}
+
+
+
+* {
+  font-family: 'FS Industrie'
+}
+

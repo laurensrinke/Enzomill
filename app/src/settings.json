@@ -1,0 +1,10 @@
+{
+  "databaseIP" : "10.10.34.73",
+  "databasePort" : "1337",
+  "webhookPort" : "5000",
+  "SerialPort" : "COM5",
+  "fullscreen" : false,
+  "IdleTime" : 30000,
+  "bereich" : "koerper-und-geist",
+  "typ": "science"
+}

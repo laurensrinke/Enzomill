@@ -1,0 +1,62 @@
+{
+  "name": "Enzomill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MPCNC Control Panel",
+  "author": "Laurens Rinke",
+  "build": {
+    "appId": "Enzomill"
+  },
+  "homepage": ".",
+  "main": "public/electron.js",
+  "dependencies": {
+    "@serialport/list": "^9.0.2",
+    "cross-env": "^7.0.0",
+    "electron-is-dev": "^1.1.0",
+    "is-electron": "^2.2.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-idle-timer": "^4.3.6",
+    "react-player": "^2.6.1",
+    "react-scripts": "^3.4.3",
+    "react-spring": "^8.0.27",
+    "serialport": "^8.0.7",
+    "zustand": "^3.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "electron": "^8.0.2",
+    "electron-builder": "^22.3.2",
+    "electron-rebuild": "^1.10.0",
+    "wait-on": "^4.0.1"
+  },
+  "scripts": {
+    "install": "electron-rebuild",
+    "postinstall": "electron-builder install-app-deps",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder ",
+    "build": "react-scripts build && electron-builder",
+    "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

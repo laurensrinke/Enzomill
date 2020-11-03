@@ -1,0 +1,44 @@
+
+
+.EmergencyStop{
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+left: 0;
+right: 0;
+    padding: 22px;
+    width: 86px;
+    height: 86px;
+    background: #fff27e;
+    border-radius: 50%;
+    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.16));
+  
+
+}
+.EmergencyStop button{
+    display: block;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    background: #ff5c3c;
+    color: $white;
+    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.16));
+    transition-property: all;
+
+
+}
+
+.EmergencyStop button:active{
+
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.26));
+    margin: 3px 0 0 3px;
+    width: 80px;
+    height: 80px;
+
+
+}
+
+h2{
+    font-size: $font-size-h2;
+    font-weight: 500;
+}

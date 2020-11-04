@@ -1,13 +1,14 @@
 # Enzomill #
 This simple but usefull tool is for controlling most GCODE based DIY CNC Machines like the MPCNC.
 Move your Spindle, Set the Zero Point for each axis, load a GCODE file and start Milling.
+
 <img src="https://raw.githubusercontent.com/laurensrinke/Enzomill/master/app/src/assets/preview.png" width="90%"></img>
 
 ### How do I start? ###
 * Download the installer from the releases tab https://github.com/laurensrinke/Enzomill/releases
 * Install the Programm on your PC
 * It will start automatically the first time
-* Connect to your COM port your CNC is connected to by selecting it in the "Connect" head menu
+* Connect to your COM port your CNC is connected to by selecting it in the "Connection" menu
 * If connected you can start moving and loading files.
 * If you have selected a file for milling before connecting to the CNC, click on that file again and the start milling.
 

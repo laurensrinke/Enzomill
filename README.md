@@ -1,31 +1,21 @@
-# README #
+# Enzomill #
+This simple but usefull tool is for controlling most GCODE based DIY CNC Machines like the MPCNC.
+Move your Spindle, Set the Zero Point for each axis, load a GCODE file and start Milling.
+![Enzomill Preview Image](https://github.com/laurensrinke/Enzomill/tree/master/app/src/assets/preview.png)
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### How do I start? ###
+* Download the installer from the releases tab https://github.com/laurensrinke/Enzomill/releases
+* Install the Programm on your PC
+* It will start automatically the first time
+* Connect to your COM port your CNC is connected to by selecting it in the "Connect" head menu
+* If connected you can start moving and loading files.
+* If you have selected a file for milling before connecting to the CNC, click on that file again and the start milling.
 
-### What is this repository for? ###
-
-* Template for React App bundled with electron
-* Version 1.0
-
-### How do I get set up? ###
-* Check Wiki Page: http://wiki.17k.de/index.php?title=Electron_App
-* Install newest NodeJs (LTS) check the installer for windows-build-tools (to compile native modules)
-* windows-build-tools and python are needed for this repo if not installed during NodeJs install run npm install --global windows-build-tools --production from an admin powershell
-* run "npm install" from commandline in project folder
+### How do I get set up dev environment? ###
+Clone the repository to your harddrive.
+Install Node.js including the optional windows tools for compiling native modules
+From an powershell Window:
+* run "npm install" in project folder
 * run "npm run dev" to start developing with react and electron
-* develop react app in "./app/src/" folder
-* Look at ./app/src/settings.json for fullscreen and at ./app/public/electron.js for window dimensions
 * Dev tools automatically enabled in dev mode
-* don't put big assets like movies in git (ignore them in .gitignore)
 * Build Application with installer by running "npm run build" you will find a "dist" folder with your installable application inside
-
-### How do I build a non react app? ###
-* create a build folder inside app folder
-* copy an instance of ./app/public/electron.js to that build folder
-* copy your html5 app to that build folder
-* run "npm run electron-build" inside app folder
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact

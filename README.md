@@ -10,7 +10,7 @@ Move your Spindle, Set the Zero Point for each axis, load a GCODE file and start
 * It will start automatically the first time
 * Connect to your COM port your CNC is connected to by selecting it in the "Connection" menu
 * If connected you can start moving and loading files.
-* If you have selected a file for milling before connecting to the CNC, click on that file again and the start milling.
+* If you have selected a file for milling before connecting to the CNC, click on that file again and then start milling.
 
 ### How do I get set up dev environment? ###
 Clone the repository to your harddrive.

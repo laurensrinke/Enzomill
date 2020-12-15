@@ -3,7 +3,8 @@
   border: none;
   letter-spacing: 0.07em;
   font-size: $font-size-labels;
-  width: 50px;
+  padding: 5px 10px;
+  min-width: 50px;
   height: 25px;
   border-radius: 4px;
   background: $highlight;

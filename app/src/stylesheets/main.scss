@@ -22,7 +22,7 @@ Body{
 h3 {
     font-size: 16px;
     font-weight: normal;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 }
 
  /* width */
@@ -54,6 +54,32 @@ h3 {
     padding: 95px 0 0 45px;    
 }
 
+.XY{
+    display:"inline-block";
+}
+.XY .Button{
+    background: $third;
+}
+
+.XY .Button:hover {
+    background: #f1f5fb;
+}
+
+.Z{
+    display:"inline-block";
+    margin-left:"50px";
+    vertical-align:"top";
+    margin-top:"7px";
+}
+
+.Z .Button{
+    background: $fourth;
+}
+.Z .Button:hover {
+    background: #f1f5fb;
+}
+
+
 
 .ulHori{
     display: inline-block;
@@ -83,7 +109,7 @@ h3 {
 }
 
 .div-axis{
-    margin-top: 32px;
+    margin-top: 25px;
 }
 .ul-axis{
     margin-bottom: 5px;

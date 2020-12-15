@@ -1,6 +1,6 @@
 {
   "name": "Enzomill",
-  "version": "0.1.0",
+  "version": "v0.1.2-alpha",
   "private": true,
   "description": "MPCNC Control Panel",
   "author": "Laurens Rinke",
@@ -11,25 +11,26 @@
   "main": "public/electron.js",
   "dependencies": {
     "@serialport/list": "^9.0.2",
-    "cross-env": "^7.0.0",
-    "electron-is-dev": "^1.1.0",
+    "cross-env": "^7.0.2",
+    "electron-is-dev": "^1.2.0",
+    "fs": "0.0.1-security",
     "is-electron": "^2.2.0",
     "node-sass": "^4.14.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-idle-timer": "^4.3.6",
-    "react-player": "^2.6.1",
-    "react-scripts": "^3.4.3",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-idle-timer": "^4.5.0",
+    "react-player": "^2.6.2",
+    "react-scripts": "^3.4.4",
     "react-spring": "^8.0.27",
-    "serialport": "^8.0.7",
-    "zustand": "^3.0.1"
+    "serialport": "^8.0.8",
+    "zustand": "^3.1.4"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0",
-    "electron": "^8.0.2",
-    "electron-builder": "^22.3.2",
-    "electron-rebuild": "^1.10.0",
-    "wait-on": "^4.0.1"
+    "concurrently": "^5.3.0",
+    "electron": "^10.1.5",
+    "electron-builder": "^22.9.1",
+    "electron-rebuild": "^1.11.0",
+    "wait-on": "^4.0.2"
   },
   "scripts": {
     "install": "electron-rebuild",

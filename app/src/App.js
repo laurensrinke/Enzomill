@@ -19,7 +19,6 @@ import SelectableList from './components/SelectableList/SelectableList';
 
 // LAYOUTS
 import Widget from './layouts/widget';
-document.title = "Enzomill";
 
 
 const electron = window.require('electron').remote;
@@ -82,7 +81,8 @@ const App = () => {
 
 
 
-  const speed = 900;
+  const speed = 1600;
+  const speedZ = 180;
 
   
   
@@ -126,6 +126,13 @@ const App = () => {
           }
         }
       })
+
+      if(filePrinter.current){
+          
+        const fileName = filePrinter.current.fileName;
+        loadedFiles.forEach(file => {if(file.name === fileName) handlePrintFile(file); return});
+        
+      }
     }else{
       if(parser.current){
         parser.current.end();
@@ -155,6 +162,8 @@ const App = () => {
     });
 
     parser.current = port.current.pipe(new Readline());
+
+    
 
   }
 
@@ -253,7 +262,8 @@ const FileReader = (input) => new Promise((resolve) => {
 
 
 class FilePrinter{
-  constructor(file){
+  constructor(fileName,file){
+    this.fileName= fileName
     this.file = file
     this.run = false
     this.line = 0
@@ -271,9 +281,12 @@ class FilePrinter{
         }
       }
     }else{
-      terminalAddContent("Finished file");
-      this.run=false;
-      this.reset();
+      if(cmdBuffer.current[0] === this.file[this.file.length]){
+        terminalAddContent("Finished file");
+        this.run=false;
+        this.reset();
+      }
+      
     }
   }
 
@@ -320,11 +333,12 @@ class FilePrinter{
 const handlePrintFile = (infile)=>{
   const fileName = infile.name;
   const filePath = infile.path;
+  console.log(fileName)
   if(!filePrinter.current||!filePrinter.current.run){
     FileReader(filePath).then((file)=>{
-      const meta = file.meta.slice(0,3).join("\n").replace(/;/,"");
+      const meta = fileName+'\n'+file.meta.slice(0,3).join("\n").replace(/;/,"");
       setFileMeta(meta);
-      filePrinter.current = new FilePrinter(file.commands);
+      filePrinter.current = new FilePrinter(infile.name, file.commands);
     });
   }
   
@@ -333,8 +347,11 @@ const handlePrintFile = (infile)=>{
 
 }
 const handlePrintStart = ()=>{
-  if(filePrinter.current)
-  filePrinter.current.start();
+  if(filePrinter.current){
+    if (window.confirm("Is the spindle running?")) { 
+      filePrinter.current.start();
+    }
+  }
 }
 const handlePrintPause = ()=>{
   if(filePrinter.current)
@@ -342,8 +359,12 @@ const handlePrintPause = ()=>{
 }
 
 const handlePrintAbort = ()=>{
-  if(filePrinter.current)
-  filePrinter.current.reset();
+  if(filePrinter.current){
+    if (window.confirm("Are you sure you want to abort?")) { 
+      filePrinter.current.reset();
+    }
+  }
+  
 }
 //---------------- Terminal Functions -------------------//
 
@@ -483,14 +504,19 @@ const handleFileSelect = (e) => {
   const file = fileSelector.current.files[0].name;
   const filePath = fileSelector.current.files[0].path;
   const copy = () => {
+    if(fs.existsSync(savePath+file)) fs.unlinkSync(savePath+file);
+        
     fs.copyFile(filePath, savePath+file, (err)=>{
       if (err) { 
         console.log("Error Found:", err); 
       } 
       else { 
         const files = getCurrentFilenames(savePath);
-        console.log(files[0]);
         setLoadedFiles(files);
+        if(filePrinter.current){
+          const fileName = filePrinter.current.fileName;
+          files.forEach(file => {if(file.name === fileName) handlePrintFile(file); return})
+        }
       }
   
     })
@@ -506,6 +532,7 @@ const handleFileSelect = (e) => {
         }
       })
   }else{
+   
     copy();
   }
 }
@@ -532,7 +559,8 @@ const handleInputSubmitEnter = (event) => {
 }
 
 const handleMoveButton = (cmd)=>{
-  const movecmd = "G1 F"+speed+" "+cmd;
+  
+  const movecmd = "G0 F"+cmd.startsWith("Z")?speedZ:speed+" "+cmd;
   sendMoveCommand(movecmd);
 }
 
@@ -574,7 +602,7 @@ const selectable = ()=>{
       <EmergenyStop handleClick={(event)=>{handleEmergencyButton("M112");}}/>
       <Widget height="579px" titel="Control">
         <h3>Move Axis</h3>
-        <div style={{display:"inline-block"}}>
+        <div className="XY" style={{display:"inline-block"}}>
           <div className="cross-verti">
             <ul className="ulVerti">
               <li><Button label="10" handleClick={(event)=>{handleMoveButton("Y10")}}></Button></li>
@@ -605,7 +633,7 @@ const selectable = ()=>{
             </ul>
           </div>
         </div>
-        <div style={{display:"inline-block", marginLeft:"50px", verticalAlign:"top", marginTop:"7px"}}>
+        <div className="Z" style={{display:"inline-block", marginLeft:"50px", verticalAlign:"top", marginTop:"7px"}}>
           
             <ul className="ulVerti">
               <li><Button label="10" handleClick={(event)=>{handleMoveButton("Z10")}}></Button></li>
@@ -635,15 +663,16 @@ const selectable = ()=>{
           </ul>
         </div>
         <div className="div-axis">
-          <h3>Home Axis</h3>
+          <h3>Go To Zero</h3>
           <ul className="ul-axis">
-            <li><Button label="XYZ" handleClick={(event)=>{handleCodeButton("G28 X Y Z")}}></Button></li>
-            <li><Button label="XY" handleClick={(event)=>{handleCodeButton("G28 X Y ")}}></Button></li>
+            <li><Button label="XY" handleClick={(event)=>{handleCodeButton("G0 "+speed+" X0.000 Y0.000")}}></Button></li>
+            <li><Button label="Z" handleClick={(event)=>{handleCodeButton("G0 "+speedZ+" Z0.000")}}></Button></li>
           </ul>
+        </div>
+        <div className="div-axis">
+          <h3>Config</h3>
           <ul className="ul-axis">
-            <li><Button label="X" handleClick={(event)=>{handleCodeButton("G28 X")}}></Button></li>
-            <li><Button label="Y"  handleClick={(event)=>{handleCodeButton("G28 Y")}}></Button></li>
-            <li><Button label="Z" handleClick={(event)=>{handleCodeButton("G28 Z")}}></Button></li>
+            <li><Button label="Motors Off" handleClick={(event)=>{handleCodeButton("M18")}}></Button></li>
           </ul>
         </div>
       </Widget>

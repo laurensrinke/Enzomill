@@ -51,9 +51,9 @@ const menuTemplate = [
 
 
 
-const fs = electron.require('fs');
-const serialport = electron.require('serialport');
-const Readline = electron.require('@serialport/parser-readline');
+const fs = window.require('fs');
+const serialport = window.require('serialport');
+const Readline = window.require('@serialport/parser-readline');
 const savePath = './assets/files/';
 
 

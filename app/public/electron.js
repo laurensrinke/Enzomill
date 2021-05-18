@@ -14,6 +14,7 @@ var express = require('express'),
 const path = require('path');
 
 function createWindow() {
+	app.allowRendererProcessReuse= false;
 	mainWindow = new BrowserWindow({
 	    width: 1290,
 	    height: 840,
@@ -23,7 +24,9 @@ function createWindow() {
 	    frame: true,
 	    webPreferences: {
 		  nodeIntegration: true,
-		  enableRemoteModule:true
+		  enableRemoteModule:true,
+		  contextIsolation: false,
+		  webSecurity:false
 	    }
   	});
 
